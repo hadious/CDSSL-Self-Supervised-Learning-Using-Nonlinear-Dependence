@@ -44,34 +44,6 @@ loss.backward()
 ---
 
 
-CDSSL is an SSL framework that unifies linear *correlation* objectives (Barlow Twins / VICReg–style) with nonlinear *dependence* via **HSIC** in RKHS. It instantiates **8 complementary losses** across {sample, feature} × {auto, cross} × {linear, nonlinear}, yielding richer and less-redundant representations.
-
-> Source code for the paper *Self-Supervised Learning Using Nonlinear Dependence*. :contentReference[oaicite:0]{index=0}
-
----
-
-## What’s in this repo
-
-- **Training & configs**
-  - `main.py` — main training script for standard datasets. :contentReference[oaicite:1]{index=1}
-  - `main_imagenet.py` — ImageNet-100 (or similar) entrypoint. :contentReference[oaicite:2]{index=2}
-  - `config.yaml`, `Temp_Config.yaml` — training hyperparams & settings. :contentReference[oaicite:3]{index=3}
-  - `environment.yaml` — Conda env spec. :contentReference[oaicite:4]{index=4}
-- **Baselines / components**
-  - `Custom_vic/` — custom VICReg components. :contentReference[oaicite:5]{index=5}
-  - `statistical_HSIC/` — HSIC/RBF-kernel utilities. :contentReference[oaicite:6]{index=6}
-  - `utils/` — common helpers (datasets, augmentations, meters, etc.). :contentReference[oaicite:7]{index=7}
-- **Evaluation & analysis**
-  - `DownStream.py` — linear probe / kNN style downstream eval. :contentReference[oaicite:8]{index=8}
-  - `Downstream_clustering.py` — unsupervised clustering eval. :contentReference[oaicite:9]{index=9}
-  - `HEatmap.py` — heatmaps (e.g., covariance/HSIC). :contentReference[oaicite:10]{index=10}
-- **Other**
-  - `Optimize.py`, `SIMClr.py`, `SimCLR2.py`, `test_distributed.py`, `.gitignore`. :contentReference[oaicite:11]{index=11}
-
-> If any of the above scripts expose CLI flags via `argparse`, use them; otherwise set values in `config.yaml`.
-
----
-
 ## Install
 
 Using the provided Conda spec:
