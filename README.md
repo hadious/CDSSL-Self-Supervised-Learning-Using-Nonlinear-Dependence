@@ -60,10 +60,7 @@ conda activate cdssl
 
 - **Entry points**: `main.py` (standard datasets) and `main_imagenet.py` (larger-scale) orchestrate the end-to-end loop: data → two augmented views → encoder+expander → multi-term CDSSL loss → optimizer → checkpoints.
 - **Configuration-first**: `config.yaml` is the single source of truth for datasets, model/backbone, optimizer, augmentation, and the eight CDSSL loss weights. Edit the config to define an experiment; the runners stay unchanged.
-- **Separation of concerns**:
-  - **Data & Augmentations**: utilities assemble two stochastic views per sample (SimCLR-style) so the method focuses on invariances/dependences rather than dataset plumbing.
-  - **Backbone + Expander**: a standard vision backbone (e.g., ResNet-18) feeds a small projector (“expander”) head sized for correlation/HSIC statistics.
-  - **Loss Layer**: linear correlation terms (variance/covariance alignment and redundancy reduction) and nonlinear dependence terms (HSIC in RKHS) are composed with non-negative weights into a single scalar objective.
+
 
 ## Training & Evaluation Workflow
 
@@ -72,25 +69,5 @@ conda activate cdssl
 3. **Statistical alignment**:
    - *Linear* terms shape second-order structure (covariances/correlations) across samples and features.
    - *Nonlinear* terms shape higher-order dependencies via HSIC, capturing relationships linear metrics miss.
-4. **Optimization & checkpoints**: Training logs the objective and writes periodic checkpoints compatible with downstream tasks.
-5. **Downstream probes**: Separate scripts provide linear/kNN probes and unsupervised clustering to measure transfer without fine-tuning.
-
-## Config-Driven Experiments
-
-- **One file, many runs**: Experiments are encoded in `config.yaml` to ensure runs are traceable, comparable, and easily shared.
-- **Stable defaults**: Sensible kernels (RBF), standard backbones, and conservative optimizer settings reduce hyperparameter churn.
-- **Minimal friction**: To try a new dataset or backbone, edit the config and (optionally) drop a small builder function—no runner rewrite.
-
-## Extensibility (Design Intent)
-
-- **New datasets**: add a dataset builder and update the config—dual-view logic remains intact.
-- **New backbones**: register a model that returns an embedding dimension; the expander and loss layer adapt automatically.
-- **New objectives**: plug additional correlation/HSIC variants or negatives into the loss composer without touching the training loop.
-
-## Reproducibility & Logging (Practices)
-
-- **Deterministic seeds** and **consistent batch statistics** make runs comparable.
-- **Clear output structure** under `out_dir/` (checkpoints + logs) simplifies downstream evaluation and ablations.
-- **Human-interpretable diagnostics** (e.g., covariance/HSIC heatmaps) help verify that the representation is spreading, aligning, and de-correlating as intended.
 
 ---
