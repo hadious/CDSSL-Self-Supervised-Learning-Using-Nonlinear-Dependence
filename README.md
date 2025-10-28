@@ -56,9 +56,7 @@ conda activate cdssl
 ---
 ---
 
-## Repository Overview (High-Level)
-
-This codebase is organized for **clarity, reproducibility, and extensibility** rather than one-off scripts. At a high level:
+## Repository Overview
 
 - **Entry points**: `main.py` (standard datasets) and `main_imagenet.py` (larger-scale) orchestrate the end-to-end loop: data → two augmented views → encoder+expander → multi-term CDSSL loss → optimizer → checkpoints.
 - **Configuration-first**: `config.yaml` is the single source of truth for datasets, model/backbone, optimizer, augmentation, and the eight CDSSL loss weights. Edit the config to define an experiment; the runners stay unchanged.
@@ -67,7 +65,7 @@ This codebase is organized for **clarity, reproducibility, and extensibility** r
   - **Backbone + Expander**: a standard vision backbone (e.g., ResNet-18) feeds a small projector (“expander”) head sized for correlation/HSIC statistics.
   - **Loss Layer**: linear correlation terms (variance/covariance alignment and redundancy reduction) and nonlinear dependence terms (HSIC in RKHS) are composed with non-negative weights into a single scalar objective.
 
-## Training & Evaluation Workflow (Conceptual)
+## Training & Evaluation Workflow
 
 1. **Dual-view pipeline**: Each image is transformed into two semantically related but distributionally perturbed views.
 2. **Representation building**: The encoder maps views to embeddings; the expander increases expressiveness for statistical alignment.
@@ -77,7 +75,7 @@ This codebase is organized for **clarity, reproducibility, and extensibility** r
 4. **Optimization & checkpoints**: Training logs the objective and writes periodic checkpoints compatible with downstream tasks.
 5. **Downstream probes**: Separate scripts provide linear/kNN probes and unsupervised clustering to measure transfer without fine-tuning.
 
-## Config-Driven Experiments (Philosophy)
+## Config-Driven Experiments
 
 - **One file, many runs**: Experiments are encoded in `config.yaml` to ensure runs are traceable, comparable, and easily shared.
 - **Stable defaults**: Sensible kernels (RBF), standard backbones, and conservative optimizer settings reduce hyperparameter churn.
