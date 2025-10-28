@@ -43,7 +43,6 @@ loss.backward()
 ```
 ---
 
-# CDSSL: Self-Supervised Learning Using Nonlinear Dependence
 
 CDSSL is an SSL framework that unifies linear *correlation* objectives (Barlow Twins / VICReg–style) with nonlinear *dependence* via **HSIC** in RKHS. It instantiates **8 complementary losses** across {sample, feature} × {auto, cross} × {linear, nonlinear}, yielding richer and less-redundant representations.
 
@@ -80,3 +79,5 @@ Using the provided Conda spec:
 ```bash
 conda env create -f environment.yaml
 conda activate cdssl
+```
+
