@@ -40,8 +40,8 @@ loss = (λ_acs*L_acs(z,z') + λ_ccs*L_ccs(z,z')
       + λ_ads*L_ads(z)    + λ_cds*L_cds(z,z')
       + λ_adf*L_adf(z)    + λ_cdf*L_cdf(z,z', shuffle_features=True))
 loss.backward()
-
-
+```
+---
 
 # CDSSL: Self-Supervised Learning Using Nonlinear Dependence
 
