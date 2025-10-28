@@ -1,0 +1,147 @@
+
+hyperparameters:
+  batch_size: 512
+  learning_rate: 0.0002
+  num_epochs: 500
+  classifier_epochs: 11
+  latent_dim: 512
+  expander_dim: 1024
+  gradient_clipping: False
+  test_using_classifier: True
+  VARIANCE_eps: 0.0001
+  VARIANCE_THRESH: 1
+  weight_decay: 0.000001
+  # RBF_GAMMA
+  optimizer: 'Adam'
+  EXPANDER_HIDDEN_DIM: 1024
+  LOG_name: 'kernel_vic_mnist_cov0'
+  SAVE_THE_MODEL: True
+  LOAD_THE_MODEL: False
+  MODEL_PATH: ""   #Example "models/encoder_20231112_153000.pth" # models/encoder_20241119_150953.pth
+  METHOD: OURS
+
+loss_weights:
+  kernel_vicreg: 0
+  kernel_vicreg_parts:
+    inv_loss: 0
+    var_loss: 0
+    cov_loss: 0
+  hsic: 0
+  jsd: 0
+  ot_loss: 0
+  mmd: 0
+  var_loss: 25
+  cov_loss: 1
+  ent_loss: 0
+  inv_loss: 25
+  lambda_barlow: 0.05 # important in SA
+  auto_cor_weight: 10
+
+
+ 
+# Mnist
+  # cross_correlation_between_samples_weight: 0.01
+  # cross_correlation_between_features_weight: 0.001
+  # auto_correlation_between_samples_weight: 0.00001
+  # auto_correlation_between_features_weight: 0.0001
+  # cross_dependence_between_samples_weight: 110
+  # cross_dependence_between_features_weight: 1
+  # auto_dependence_between_samples_weight: 10
+  # auto_dependence_between_features_weight: 0.1
+ 
+
+
+
+# CiFar
+  # cross_correlation_between_samples_weight: 0.0001
+  # cross_correlation_between_features_weight: 0.0001
+  # auto_correlation_between_samples_weight: 0.00001
+  # auto_correlation_between_features_weight: 0.00001
+  # cross_dependence_between_samples_weight: 1000
+  # cross_dependence_between_features_weight: 1
+  # auto_dependence_between_samples_weight: 10
+  # auto_dependence_between_features_weight: 0.5
+
+
+  # cross_correlation_between_samples_weight: 0.1
+  # cross_correlation_between_features_weight: 0
+  # auto_correlation_between_samples_weight: 0
+  # auto_correlation_between_features_weight: 0
+  # cross_dependence_between_samples_weight: 100
+  # cross_dependence_between_features_weight: 1
+  # auto_dependence_between_samples_weight: 0
+  # auto_dependence_between_features_weight: 0
+
+  # cross_correlation_between_samples_weight: 0.01
+  # cross_correlation_between_features_weight: 0.01
+  # auto_correlation_between_samples_weight: 0.000001
+  # auto_correlation_between_features_weight: 0.00001
+  # cross_dependence_between_samples_weight: 90
+  # cross_dependence_between_features_weight: 5
+  # auto_dependence_between_samples_weight: 0.001
+  # auto_dependence_between_features_weight: 0.001
+
+  # cross_correlation_between_samples_weight: 0.09851657063244622
+  # cross_correlation_between_features_weight: 0.011875856383378184
+  # auto_correlation_between_samples_weight: 0.00003971165648693838
+  # auto_correlation_between_features_weight: 0.0031513561156806905
+  # cross_dependence_between_samples_weight: 98.49526415824425
+  # cross_dependence_between_features_weight: 10.102768584001982
+  # auto_dependence_between_samples_weight: 30.097071445183098
+  # auto_dependence_between_features_weight: 0.5406904128344567
+
+#  A=9.38, B=1.11, C=0.561, D=3.46, E=-0.286, F=-0.922, G=-0.33, H=-0.191
+# =68.2, B=20.4, C=4.02, D=0.655, E=-0.331, F=-0.0659, G=-0.0351, H=-1.01
+
+  #   ac_features: 0.00031513561156806905
+  # ac_samples: 0.0002971165648693838
+  # ad_features: 5.406904128344567
+  # ad_samples: 3.097071445183098
+
+  # cc_features: 0.011875856383378184
+  # cc_samples: 0.09851657063244622
+  # cd_features: 1.102768584001982
+  # cd_samples: 98.49526415824425
+
+  
+# TINY_IMAGENET
+
+  # cross_correlation_between_samples_weight: 0.001
+  # cross_correlation_between_features_weight: 0.0006
+  # auto_correlation_between_samples_weight: 0.00003
+  # auto_correlation_between_features_weight: 0.00001
+  # cross_dependence_between_samples_weight: 238.09
+  # cross_dependence_between_features_weight: 0.94
+  # auto_dependence_between_samples_weight: 75.75
+  # auto_dependence_between_features_weight: 0.459
+  
+  # cross_correlation_between_samples_weight: 0.01
+  # cross_correlation_between_features_weight: 0.006
+  # auto_correlation_between_samples_weight: 0.0003
+  # auto_correlation_between_features_weight: 0.0001
+  # cross_dependence_between_samples_weight: 100
+  # cross_dependence_between_features_weight: 1
+  # auto_dependence_between_samples_weight: 10
+  # auto_dependence_between_features_weight: 1
+  
+# Mini imagent:
+
+  
+  # cross_correlation_between_samples_weight: 0.01
+  # cross_correlation_between_features_weight: 0.5
+  # auto_correlation_between_samples_weight: 0.00002
+  # auto_correlation_between_features_weight: 0.01
+  # cross_dependence_between_samples_weight: 2100
+  # cross_dependence_between_features_weight: 0.00001
+  # auto_dependence_between_samples_weight: 1
+  # auto_dependence_between_features_weight: 0.0003
+
+
+
+dataset:
+  data_set_name: 'MNIST' #'CIFAR10' # MNIST # STL10 # TINY_IMAGENET #MINI_IMAGENET # IMAGENET
+  DATASET_NUMBER_OF_CLASS: 10
+  number_of_clusters: 10
+  number_of_workers: 16
+  prefetch_factor: 16
+

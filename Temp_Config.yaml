@@ -1,0 +1,49 @@
+dataset:
+  DATASET_NUMBER_OF_CLASS: 10
+  data_set_name: CIFAR10
+  number_of_clusters: 10
+  number_of_workers: 16
+  prefetch_factor: 16
+hyperparameters:
+  EXPANDER_HIDDEN_DIM: 1024
+  LOAD_THE_MODEL: false
+  LOG_name: log_ours_cifar_optimization
+  METHOD: OURS
+  MODEL_PATH: ''
+  SAVE_THE_MODEL: true
+  VARIANCE_THRESH: 1
+  VARIANCE_eps: 0.0001
+  batch_size: 512
+  classifier_epochs: 5
+  expander_dim: 1024
+  gradient_clipping: false
+  latent_dim: 512
+  learning_rate: 0.0002
+  num_epochs: 15
+  optimizer: Adam
+  test_using_classifier: true
+  weight_decay: 1.0e-06
+loss_weights:
+  auto_cor_weight: 10
+  auto_correlation_between_features_weight: 0.007389635987959707
+  auto_correlation_between_samples_weight: 0.00013274366779032323
+  auto_dependence_between_features_weight: 2.1915407754649947
+  auto_dependence_between_samples_weight: 2.52381865135371
+  cov_loss: 1
+  cross_correlation_between_features_weight: 0.8973312806564069
+  cross_correlation_between_samples_weight: 0.012069528530143798
+  cross_dependence_between_features_weight: 7.43398964275096
+  cross_dependence_between_samples_weight: 86.98720100284574
+  ent_loss: 0
+  hsic: 0
+  inv_loss: 25
+  jsd: 0
+  kernel_vicreg: 0
+  kernel_vicreg_parts:
+    cov_loss: 0
+    inv_loss: 0
+    var_loss: 0
+  lambda_barlow: 0.05
+  mmd: 0
+  ot_loss: 0
+  var_loss: 25
