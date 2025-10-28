@@ -1,7 +1,7 @@
 
 # CDSSL: Self-Supervised Learning Using Nonlinear Dependence
 
-
+![CDSSL overview](SSL_categories.png)
 
 **CDSSL** is a general SSL framework that unifies linear *correlation* objectives (e.g., Barlow Twins / VICReg style) with nonlinear *dependence* via **HSIC** in RKHS. It introduces **8 complementary loss terms** across sample/feature × auto/cross × linear/nonlinear axes, yielding richer, less-redundant representations and stronger transfer. :contentReference[oaicite:0]{index=0}
 
